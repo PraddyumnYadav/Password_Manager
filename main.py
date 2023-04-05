@@ -1,12 +1,25 @@
 # Getting the Master Password
 pwd = input("Enter the Master Password: ")
 
-# Getting the mode
+# Printing the Mode Message
 print(
 	"""
 	Mode: 
 		Add a new Password: add
 		View Existing Passwords: view
+		Press q to Quit.
 	"""
 )
-mode = input("Mode: ")
+
+# Getting the mode and do Operations
+while True:
+	mode = input("Mode: ").lower()
+	if mode == "q":
+		break
+	elif mode == "view":
+		pass
+	elif mode == "add":
+		pass
+	else:
+		print("Invalid Input")
+		continue
