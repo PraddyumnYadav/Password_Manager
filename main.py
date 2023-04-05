@@ -1,7 +1,15 @@
+# Importing Essentials
+from cryptography.fernet import Fernet
+
+
 # Create our main Function
 def main():
     # Getting the Master Password
-    pwd = input("Enter the Master Password: ")
+    master_pwd = input("Enter the Master Password: ")
+
+    # Loading the Key and passing it to Fernet
+	key = load_key() + master_pwd.bytes
+	fer = Fernet(key)
 
     # Printing the Mode Message
     msg = "Mode:\n    Add a new Password: add \n    View Existing Passwords: view \n    Press q to Quit."
@@ -46,6 +54,22 @@ def add():
 
     with open("passwords.txt", "a") as f:
         f.write(name + "|" + userName + "|" + password + "\n")
+
+
+"""
+def write_key():
+    key = Fernet.generate_key()
+    with open("key.key", "wb") as key_file:
+        key_file.write(key)
+write_key()
+"""
+
+
+def load_key():
+    file = open("key.key", "rb")
+    key = file.read()
+    file.close()
+    return key
 
 
 # Run Our main() function
