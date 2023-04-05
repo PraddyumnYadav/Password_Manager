@@ -23,11 +23,26 @@ def main():
 
 # Define more Functions
 def view():
-	pass
+    sep = "------------------------------------------------------------------------------------------"
+    print(sep)
+    with open("passwords.txt") as f:
+        f = f.read().split("\n")
+        for password in f:
+            if password == "":
+                continue
+
+            account = password.split("|")[0]
+            userName = password.split("|")[1]
+            pwd = password.split("|")[2]
+
+            print("Account Name: " + account)
+            print("User Name: " + userName)
+            print("Password: " + pwd)
+            print(sep)
 
 
 def add():
-    name = input("Accound Name: ")
+    name = input("Account Name: ")
     userName = input("User Name: ")
     password = input("Password: ")
 
