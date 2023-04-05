@@ -19,9 +19,9 @@ def main():
         if mode == "q":
             break
         elif mode == "view":
-            pass
+            view()
         elif mode == "add":
-            pass
+            add()
         else:
             print("Invalid Input")
             continue
