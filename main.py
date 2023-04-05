@@ -31,9 +31,7 @@ def view():
             if password == "":
                 continue
 
-            account = password.split("|")[0]
-            userName = password.split("|")[1]
-            pwd = password.split("|")[2]
+            account, userName, pwd = password.split("|")
 
             print("Account Name: " + account)
             print("User Name: " + userName)
