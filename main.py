@@ -4,14 +4,8 @@ def main():
     pwd = input("Enter the Master Password: ")
 
     # Printing the Mode Message
-    print(
-        """
-		Mode: 
-			Add a new Password: add
-			View Existing Passwords: view
-			Press q to Quit.
-		"""
-    )
+    msg = "Mode:\n    Add a new Password: add \n    View Existing Passwords: view \n    Press q to Quit."
+    print(msg)
 
     # Getting the mode and do Operations
     while True:
@@ -33,7 +27,12 @@ def view():
 
 
 def add():
-    pass
+    name = input("Accound Name: ")
+    userName = input("User Name: ")
+    password = input("Password: ")
+
+    with open("passwords.txt", "a") as f:
+        f.write(name + "|" + userName + "|" + password)
 
 
 # Run Our main() function
