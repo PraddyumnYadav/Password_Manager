@@ -8,8 +8,9 @@ def main():
     master_pwd = input("Enter the Master Password: ")
 
     # Loading the Key and passing it to Fernet
-	key = load_key() + master_pwd.bytes
-	fer = Fernet(key)
+    global fer
+    key = load_key() + master_pwd.encode()
+    fer = Fernet(key)
 
     # Printing the Mode Message
     msg = "Mode:\n    Add a new Password: add \n    View Existing Passwords: view \n    Press q to Quit."
@@ -40,6 +41,8 @@ def view():
                 continue
 
             account, userName, pwd = password.split("|")
+            userName = fer.decrypt(userName.encode()).decode()
+            pwd = fer.decrypt(pwd.encode()).decode()
 
             print("Account Name: " + account)
             print("User Name: " + userName)
@@ -53,7 +56,7 @@ def add():
     password = input("Password: ")
 
     with open("passwords.txt", "a") as f:
-        f.write(name + "|" + userName + "|" + password + "\n")
+        f.write(name + "|" + fer.encrypt(userName.encode()).decode() + "|" + fer.encrypt(password.encode()).decode() + "\n")
 
 
 """
