@@ -27,5 +27,14 @@ def main():
             continue
 
 
+# Define more Functions
+def view():
+    pass
+
+
+def add():
+    pass
+
+
 # Run Our main() function
 main()
