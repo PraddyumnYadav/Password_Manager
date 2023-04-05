@@ -23,7 +23,7 @@ def main():
 
 # Define more Functions
 def view():
-    pass
+	pass
 
 
 def add():
@@ -32,7 +32,7 @@ def add():
     password = input("Password: ")
 
     with open("passwords.txt", "a") as f:
-        f.write(name + "|" + userName + "|" + password)
+        f.write(name + "|" + userName + "|" + password + "\n")
 
 
 # Run Our main() function
